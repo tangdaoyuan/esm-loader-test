@@ -38,14 +38,20 @@ jobs:
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3.4.1
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Typescript Switch
         run: pnpm install typescript@${{ matrix.typescript-version }}
 
       - name: Test For Node12+
         if: matrix.node-version != '12.20.0'
-        run: pnpm test
+        run: |
+          pnpm tsc -v
+          pnpm test
 
       - name: Test For Node12
         if: matrix.node-version == '12.20.0'
-        run: npm run test-downgrade
+        run: |
+          npx tsc -v
+          npm run test-downgrade
