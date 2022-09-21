@@ -34,7 +34,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build
-        run: pnpm run bulid
+        run: pnpm run build
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3.4.1
