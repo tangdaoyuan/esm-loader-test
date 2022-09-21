@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.20.0, 14.x, 16.x, 18.x]
-        os: [windows-lattest]
+        os: [windows-latest]
         typescript-version: [4.7, 4.8]
       fail-fast: false
 
