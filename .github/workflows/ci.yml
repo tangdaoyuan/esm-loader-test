@@ -14,7 +14,7 @@ jobs:
       matrix:
         node-version: [12.20.0, 14.x, 16.x, 18.x]
         os: [windows-2022, windows-2019]
-        typescript-version: [3.9, 4.7, 4.8]
+        typescript-version: [3.9, 4.3, 4.7, 4.8]
       fail-fast: false
 
     steps:
