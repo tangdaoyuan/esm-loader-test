@@ -14,10 +14,13 @@ jobs:
       matrix:
         node-version: [12.20.0, 14.x, 16.x, 18.x]
         os: [windows-lattest]
+        typescript-version: [4.7, 4.8]
       fail-fast: false
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: true
 
       - name: Use Node.js For Build
         uses: actions/setup-node@v3.4.1
@@ -35,9 +38,9 @@ jobs:
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3.4.1
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: pnpm
+
+      - name: Typescript Switch
+        run: pnpm install typescript@${{ matrix.typescript-version }}
 
       - name: Test For Node12+
         if: matrix.node-version != '12.20.0'
