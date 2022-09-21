@@ -48,4 +48,4 @@ jobs:
 
       - name: Test For Node12
         if: matrix.node-version == '12.20.0'
-        run: pnpm test-downgrade
+        run: npm run test-downgrade

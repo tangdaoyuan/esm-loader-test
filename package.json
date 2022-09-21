@@ -20,7 +20,7 @@
     "test": "pnpm check-ts && pnpm check-mts && pnpm check-mjs && pnpm check-js",
     "check-node12-ts": "node --loader @esbuild-kit/esm-loader ./src/downgrade.ts",
     "check-node12-js": "node --loader @esbuild-kit/esm-loader ./src/downgrade.js",
-    "test-downgrade": "pnpm check-node12-ts && pnpm check-node12-js"
+    "test-downgrade": "npm run check-node12-ts && npm run check-node12-js"
   },
   "bugs": {
     "url": "https://github.com/tangdaoyuan/esm-loader-test/issues"
