@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: [main]
 
+jobs:
   test:
     runs-on: ${{ matrix.os }}
 
@@ -21,7 +22,7 @@ on:
       - name: Use Node.js For Build
         uses: actions/setup-node@v3.4.1
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v2.2.2
@@ -38,7 +39,7 @@ on:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
-      - name: Test
+      - name: Test For Node12+
         if: ${{ matrix.node-version != 12.20.0 }}
         run: pnpm test
 
