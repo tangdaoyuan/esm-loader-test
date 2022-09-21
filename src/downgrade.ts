@@ -30,6 +30,9 @@ Promise
             assert.equal(mod.default(), expected[ind])
         })
     })
+    .catch(err => {
+        throw new Error(err.message);
+    })
 
 
 export {};
