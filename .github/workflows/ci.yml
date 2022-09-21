@@ -6,63 +6,31 @@ on:
   pull_request:
     branches: [main]
 
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2.2.2
-
-      - name: Setup Node
-        uses: actions/setup-node@v3.4.1
-        with:
-          node-version: 16.x
-          cache: pnpm
-
-      - name: Install
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Lint
-        run: pnpm run lint
-
-  typecheck:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2.2.2
-
-      - name: Setup Node
-        uses: actions/setup-node@v3.4.1
-        with:
-          node-version: 16.x
-          cache: pnpm
-
-      - name: Install
-        run: pnpm install --no-frozen-lockfile
-
-      - name: TypeCheck
-        run: pnpm run typecheck
-
   test:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
-        os: [ubuntu-latest]
+        node-version: [12.20.0, 14.x, 16.x, 18.x]
+        os: [windows-lattest]
       fail-fast: false
 
     steps:
       - uses: actions/checkout@v3
 
+      - name: Use Node.js For Build
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version-file: '.nvmrc'
+
       - name: Setup PNPM
         uses: pnpm/action-setup@v2.2.2
+
+      - name: Install
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build
+        run: pnpm run bulid
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3.4.1
@@ -70,8 +38,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
-      - name: Install
-        run: pnpm install --no-frozen-lockfile
+      - name: Test
+        if: ${{ matrix.node-version != 12.20.0 }}
+        run: pnpm test
 
-      - name: Unit Test
-        run: pnpm run test:run
+      - name: Test For Node12
+        if: ${{ matrix.node-version == 12.20.0 }}
+        run: pnpm test-downgrade

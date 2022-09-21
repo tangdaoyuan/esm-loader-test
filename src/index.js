@@ -16,11 +16,12 @@ assert.equal(mod.default(), 'here is .mts extension')
 importer = './src/demo.mjs';
 mod = await import(path.resolve(importer))
 mod.default()
-assert.equal(mod.default(), 'here is .mts extension')
+assert.equal(mod.default(), 'here is .mjs extension')
 
 importer = './src/demo.js';
 mod = await import(path.resolve(importer))
 mod.default()
-assert.equal(mod.default(), 'here is .ts extension')
+assert.equal(mod.default(), 'here is .js extension')
+
 
 export {};

@@ -2,6 +2,7 @@
   "name": "esm-loader-test",
   "version": "0.0.0",
   "packageManager": "pnpm@7.12.1",
+  "type": "module",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -11,12 +12,23 @@
     "url": "git+https://github.com/tangdaoyuan/esm-loader-test.git"
   },
   "scripts": {
-    "start": "tsx ./src/index.ts"
+    "build": "pnpm --filter=@esbuild-kit/esm-loader run build",
+    "check-ts": "node --loader @esbuild-kit/esm-loader ./src/index.ts",
+    "check-mts": "node --loader @esbuild-kit/esm-loader ./src/index.mts",
+    "check-js": "node --loader @esbuild-kit/esm-loader ./src/index.js",
+    "check-mjs": "node --loader @esbuild-kit/esm-loader ./src/index.mjs",
+    "test": "pnpm check-ts && pnpm check-mts && pnpm check-mjs && pnpm check-js",
+    "check-node12-ts": "node --loader @esbuild-kit/esm-loader ./src/downgrade.ts",
+    "check-node12-js": "node --loader @esbuild-kit/esm-loader ./src/downgrade.js",
+    "test-downgrade": "pnpm check-node12-ts && pnpm check-node12-js"
   },
   "bugs": {
     "url": "https://github.com/tangdaoyuan/esm-loader-test/issues"
   },
   "homepage": "https://github.com/tangdaoyuan/esm-loader-test#readme",
+  "dependencies": {
+    "@esbuild-kit/esm-loader": "workspace: *"
+  },
   "devDependencies": {
     "eslint": "8.23.1",
     "typescript": "*"

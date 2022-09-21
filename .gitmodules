@@ -1,0 +1,3 @@
+[submodule "esm-loader"]
+	path = esm-loader
+	url = https://github.com/tangdaoyuan/esm-loader

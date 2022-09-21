@@ -1,1 +1,3 @@
-export default 'ts';
+export default () => {
+    return 'here is .ts extension';
+};
