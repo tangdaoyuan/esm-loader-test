@@ -1,1 +1,4 @@
-export default '@suger-tdy/typescript-starter'
+const importer = './demo.ts';
+await import(importer)
+
+export {};

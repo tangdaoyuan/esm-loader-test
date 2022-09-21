@@ -1,65 +1,24 @@
 {
-  "name": "@suger-tdy/typescript-starter",
+  "name": "esm-loader-test",
   "version": "0.0.0",
   "packageManager": "pnpm@7.12.1",
-  "description": "starter project for typescript",
-  "keywords": [
-    "typescript-starter",
-    "ts-starter"
-  ],
+  "description": "",
+  "keywords": [],
   "license": "MIT",
   "author": "tangdaoyuan <1197633750@qq.com> (https://github.com/tangdaoyuan/)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tangdaoyuan/typescript-starter.git"
+    "url": "git+https://github.com/tangdaoyuan/esm-loader-test.git"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./*": "./*"
-  },
-  "files": [
-    "dist",
-    "*.d.ts"
-  ],
   "scripts": {
-    "test": "vitest",
-    "test:run": "vitest run",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "start": "tsx ./src/index.ts",
-    "play": "npm -C playground run dev",
-    "stub": "unbuild --stub",
-    "build": "unbuild",
-    "prepublishOnly": "pnpm run build",
-    "release": "bumpp --tag --commit --push && pnpm publish"
+    "start": "tsx ./src/index.ts"
   },
   "bugs": {
-    "url": "https://github.com/tangdaoyuan/typescript-starter/issues"
+    "url": "https://github.com/tangdaoyuan/esm-loader-test/issues"
   },
-  "homepage": "https://github.com/tangdaoyuan/typescript-starter#readme",
-  "dependencies": {
-    "picocolors": "^1.0.0"
-  },
+  "homepage": "https://github.com/tangdaoyuan/esm-loader-test#readme",
   "devDependencies": {
-    "@suger-tdy/eslint-config": "1.1.11",
-    "bumpp": "8.2.1",
-    "esbuild": "0.15.8",
     "eslint": "8.23.1",
-    "tsx": "3.9.0",
-    "typescript": "4.8.3",
-    "unbuild": "0.8.11",
-    "vite": "3.1.3",
-    "vitest": "0.23.4"
-  },
-  "publishConfig": {
-    "access": "public"
+    "typescript": "*"
   }
 }
